@@ -1,0 +1,145 @@
+<div layout="row" layout-align="center" class="wrap-top-gap" ng-controller="metamask">
+   <md-content class="f1f1f1" flex>
+      <form name="metamaskForm" ng-submit="saveExtension()" novalidate>
+         <div md-whiteframe="3" layout-padding layout-margin  style="background: white">
+            <div class="row-form-panel">
+               <div class="row-form-panel">
+                  <div layout="row">
+                     <div class="col-wrapper">
+                        <p class="md-title" layout-padding>MetaMask
+                           <span class="test-tooltip" aria-label="Refresh">
+                           <md-tooltip md-direction="right">place this id to show Crypto options "CryptoPayments"
+                           </md-tooltip>
+                           <i class="material-icons">help_outline</i>
+                           </span>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="row-form-panel">
+                  <div layout="row">
+                     <md-input-container flex="100">
+                        <div class="col-wrapper">
+                           <div class="col-wrapper">
+                              <label for="ga_key" >Receiver Wellet Address<span class='required_field'>*</span></label>
+                              <input type="text" class="purple-cell" ng-model="extension.receiver_wallet_address" aria-label="Show added input" ng-required="true" >
+                           </div>
+                        </div>
+                     </md-input-container>
+                  </div>
+               </div>
+
+               <div class="row-form-panel">
+                  <div layout="row">
+                     <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                           <md-switch class="right-shift" ng-model="extension.enable_test_nets">
+                              <h2 class="mat-h2">Enable Test Nets</h2>
+                           </md-switch>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="row-form-panel">
+                  <div layout="row">
+                     <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                           <md-switch class="right-shift" ng-model="extension.enable_ETH">
+                              <h2 class="mat-h2">Payment with ETH</h2>
+                           </md-switch>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="row-form-panel">
+                  <div layout="row">
+                     <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                           <md-switch class="right-shift" ng-model="extension.enable_MATIC">
+                              <h2 class="mat-h2">Payment with Matic</h2>
+                           </md-switch>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row-form-panel">
+                  <div layout="row">
+                     <div flex="100" layout="column" flex="nogrow">
+                        <div class="col-wrapper">
+                           <md-switch class="right-shift" ng-model="extension.enable_BNB">
+                              <h2 class="mat-h2">Payment with BNB</h2>
+                           </md-switch>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row-form-panel">
+                  <div layout="row">
+                     <div flex="100" layout="column" flex="nogrow">
+                        <div layout="row">
+                           <div class="col-wrapper">
+                              <label for="" >Active On </label>
+                           </div>
+                        </div>
+                        <div layout="row" layout-wrap="">
+                           <div class="inner-box-wrapper-only-height-gap" ng-repeat="mapArray in extension.metamask_campaigns track by $index" flex="50">
+                              <div class="col-wrapper">
+                                 <div md-whiteframe="3" style="background: white">
+                                    <div class="row-form-panel with-padding">
+                                       <div layout="row" class="top-gap-0">
+                                          <md-input-container flex>
+                                             <div class="col-wrapper">
+                                                <label for="product_id">Step </label>                                                    
+                                                <md-select name="crm" ng-model="extension.metamask_campaigns[$index].step_id" required ng-change="">
+                                                   <md-option ng-repeat="data in [ '1' , '2', '3', '4', '5', '6', '7' ,'8',  '9', '10', '11' , '12', '13', '14' ,'15' ]" value="{{ data }}">{{ data | ucfirst }}</md-option>
+                                                </md-select>
+                                             </div>
+                                          </md-input-container>
+                                          <md-input-container flex>
+                                             <div class="col-wrapper">
+                                                <label for="product_price">Campaign ID </label>
+                                                <input type="text" name="campaign_id" ng-model="extension.metamask_campaigns[$index].campaign_id" required aria-label="campaign Id">
+                                             </div>
+                                          </md-input-container>
+                                       </div>
+                                       <div layout="row" layout-align="end">
+                                          <md-input-container flex class="right-shift">
+                                             <div class="col-wrapper">
+                                                <button class="md-button md-ink-ripple remove-btn" type="button" ng-click="removeStepListid($index);" ng-if="$index != 0">
+                                                   Remove
+                                                   <div class="md-ripple-container"></div>
+                                                </button>
+                                                <button class="md-button md-ink-ripple remove-btn" type="button" ng-if="$index == 0">
+                                                   &nbsp;
+                                                   <div class="md-ripple-container"></div>
+                                                </button>
+                                                <button class="md-primary md-hue-1 md-button md-ink-ripple remove-btn" type="button" ng-click="addStepListid($index)" ng-if="(extension.metamask_campaigns.length -1) == $index">
+                                                   Add New
+                                                   <div class="md-ripple-container"></div>
+                                                </button>
+                                             </div>
+                                          </md-input-container>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+            </div>
+         </div>
+         <div class="top-gap-25 layout-margin">
+            <div layout="row" layout-align="end">
+               <md-button  type="submit" class="md-raised" ng-href="#/extensions">Cancel</md-button>
+               <md-button class="md-primary md-raised" ng-disabled="metamaskForm.$submitted || metamaskForm.$invalid" type="submit">Save Settings</md-button>
+            </div>
+         </div>
+      </form>
+   </md-content>
+</div>

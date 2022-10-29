@@ -1,0 +1,128 @@
+/* The Modal (background) */
+.modalCustom {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modalCustom-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.closeButton {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeButton:hover,
+.closeButton:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#CryptoPayments {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#CryptoPayments .paymentMethods img {
+  width: 28%;
+  display: block;
+  margin: 0 auto;
+}
+
+#CryptoPayments .paymentMethods {
+  border: transparent;
+  border-radius: 0.375rem;
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+#CryptoPayments .paymentMethods:not(:last-child) {
+  margin-right: 1rem;
+}
+
+#CryptoPayments #ETH {
+  background: #dbb149;
+}
+
+#CryptoPayments #MATIC {
+  background: #a05ddd;
+}
+
+#CryptoPayments #BNB {
+  background: #d38700;
+}
+
+.modalBox {
+  width: 100%;
+  max-width: 400px;
+  margin: 100px auto;
+  background: #fff;
+  border: transparent;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.modalBox .modal-content {
+  cursor: pointer;
+}
+
+.modalBox .modal-content:not(:last-child) {
+  padding-bottom: 0.5rem;
+}
+
+.modalBox .modal-content:not(:first-child) {
+  padding-top: 0.5rem;
+  border-top: 1px solid #e3e3e3;
+}
+
+.closeButton {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: #fff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  border: transparent;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton img {
+  width: 14px;
+}
+
+@media screen and (max-width: 479px) {
+  .modalBox {
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .modalBox {
+    max-width: 250px;
+  }
+}
